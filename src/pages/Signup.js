@@ -21,8 +21,6 @@ export default class SignUp extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    //this.googleSignIn = this.googleSignIn.bind(this);
-    //this.githubSignIn = this.githubSignIn.bind(this);
   }
 
   handleChange(event) {
@@ -51,34 +49,34 @@ export default class SignUp extends Component {
           </div>
 
           <div className="form-group">
-            <input className="form-control" placeholder="First Name" name="First Name" type="text" onChange={this.handleChange} value={this.state.firstName}></input>
+            <input className="form-control" placeholder="First Name" name="firstName" type="text" onChange={this.handleChange} value={this.state.firstName}></input>
           </div>
           <div className="form-group">
-            <input className="form-control" placeholder="Last Name" name="Last Name" onChange={this.handleChange} value={this.state.lastName} type="text"></input>
+            <input className="form-control" placeholder="Last Name" name="lastName" onChange={this.handleChange} value={this.state.lastName} type="text"></input>
           </div>
           <div className="form-group">
-            <input className="form-control" placeholder="Graduating Year" name="Graduating Year" onChange={this.handleChange} value={this.state.graduateYear} type="text"></input>
+            <input className="form-control" placeholder="Graduating Year" name="graduateYear" onChange={this.handleChange} value={this.state.graduateYear} type="text"></input>
           </div>
           <div className="form-group">
-            <input className="form-control" placeholder="Field of Study" name="Field of Study" onChange={this.handleChange} value={this.state.studyField} type="text"></input>
+            <input className="form-control" placeholder="Field of Study" name="studyField" onChange={this.handleChange} value={this.state.studyField} type="text"></input>
           </div>
           <div className="form-group">
-            <input className="form-control" placeholder="University" name="University" onChange={this.handleChange} value={this.state.university} type="text"></input>
+            <input className="form-control" placeholder="University" name="university" onChange={this.handleChange} value={this.state.university} type="text"></input>
           </div>
           <div className="form-group">
-            <input className="form-control" placeholder="University Email" name="University Email" onChange={this.handleChange} value={this.state.universityEmail} type="email"></input>
+            <input className="form-control" placeholder="University Email" name="universityEmail" onChange={this.handleChange} value={this.state.universityEmail} type="email"></input>
           </div>
           <div className="form-group">
-            <input className="form-control" placeholder="Current City" name="Current City" onChange={this.handleChange} value={this.state.city} type="text"></input>
+            <input className="form-control" placeholder="Current City" name="city" onChange={this.handleChange} value={this.state.city} type="text"></input>
           </div>
           <div className="form-group">
-            <input className="form-control" placeholder="Time Zone" name="Time Zone" onChange={this.handleChange} value={this.state.timeZone} type="text"></input>
+            <input className="form-control" placeholder="Time Zone" name="timeZone" onChange={this.handleChange} value={this.state.timeZone} type="text"></input>
           </div>
           <div className="form-group">
-            <input className="form-control" placeholder="Password" name="Password" onChange={this.handleChange} value={this.state.password} type="password"></input>
+            <input className="form-control" placeholder="Password" name="password" onChange={this.handleChange} value={this.state.password} type="password"></input>
           </div>
           <div className="form-group">
-            <input className="form-control" placeholder="Confirm Password" name="Confirm Password" onChange={this.handleChange} value={this.state.confirmPassword} type="password"></input>
+            <input className="form-control" placeholder="Confirm Password" name="confirmPassword" onChange={this.handleChange} value={this.state.confirmPassword} type="password"></input>
           </div>
 
           <div className="form-group">

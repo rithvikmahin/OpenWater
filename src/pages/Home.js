@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
-import '../assets/css/home.css'
+import '../assets/css/main.css'
 
 export default class HomePage extends Component {
   render() {
@@ -12,7 +10,7 @@ export default class HomePage extends Component {
           <div className="jumbotron jumbotron-fluid py-5">
             <div className="container text-center py-5">
                 <div className='image-container'>
-                  <img src={ require('../assets/images/Logo.png') } className='center' />
+                  <img src={ require('../assets/images/Logo.png') } alt='' className='center' />
                 </div>
                 
                   <div className='button-container'>

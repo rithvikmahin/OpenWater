@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import '../assets/css/main.css'
 import { signup } from "../helpers/auth";
 
 export default class SignUp extends Component {
@@ -8,8 +8,16 @@ export default class SignUp extends Component {
     super();
     this.state = {
       error: null,
-      email: '',
+      firstName: '',
+      lastName: '',
+      graduateYear: '',
+      studyField: '',
+      university: '',
+      universityEmail: '',
+      city: '',
+      timeZone: '',
       password: '',
+      confirmPassword: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,24 +44,47 @@ export default class SignUp extends Component {
   render() {
     return (
       <div className="container">
-        <form className="mt-5 py-5 px-5" onSubmit={this.handleSubmit}>
-          <h1>
-            Sign Up to
-          <Link className="title ml-2" to="/">Chatty</Link>
-          </h1>
-          <p className="lead">Fill in the form below to create an account.</p>
+        <form className="mt-5 py-5 px-5" style={{margin: 'auto'}} onSubmit={this.handleSubmit}>
+        
+          <div className='image-container'>
+              <img src={ require('../assets/images/Logo.png') } alt='' className='center' />
+          </div>
+
           <div className="form-group">
-            <input className="form-control" placeholder="Email" name="email" type="email" onChange={this.handleChange} value={this.state.email}></input>
+            <input className="form-control" placeholder="First Name" name="First Name" type="text" onChange={this.handleChange} value={this.state.firstName}></input>
           </div>
           <div className="form-group">
-            <input className="form-control" placeholder="Password" name="password" onChange={this.handleChange} value={this.state.password} type="password"></input>
+            <input className="form-control" placeholder="Last Name" name="Last Name" onChange={this.handleChange} value={this.state.lastName} type="text"></input>
           </div>
+          <div className="form-group">
+            <input className="form-control" placeholder="Graduating Year" name="Graduating Year" onChange={this.handleChange} value={this.state.graduateYear} type="text"></input>
+          </div>
+          <div className="form-group">
+            <input className="form-control" placeholder="Field of Study" name="Field of Study" onChange={this.handleChange} value={this.state.studyField} type="text"></input>
+          </div>
+          <div className="form-group">
+            <input className="form-control" placeholder="University" name="University" onChange={this.handleChange} value={this.state.university} type="text"></input>
+          </div>
+          <div className="form-group">
+            <input className="form-control" placeholder="University Email" name="University Email" onChange={this.handleChange} value={this.state.universityEmail} type="email"></input>
+          </div>
+          <div className="form-group">
+            <input className="form-control" placeholder="Current City" name="Current City" onChange={this.handleChange} value={this.state.city} type="text"></input>
+          </div>
+          <div className="form-group">
+            <input className="form-control" placeholder="Time Zone" name="Time Zone" onChange={this.handleChange} value={this.state.timeZone} type="text"></input>
+          </div>
+          <div className="form-group">
+            <input className="form-control" placeholder="Password" name="Password" onChange={this.handleChange} value={this.state.password} type="password"></input>
+          </div>
+          <div className="form-group">
+            <input className="form-control" placeholder="Confirm Password" name="Confirm Password" onChange={this.handleChange} value={this.state.confirmPassword} type="password"></input>
+          </div>
+
           <div className="form-group">
             {this.state.error ? <p className="text-danger">{this.state.error}</p> : null}
-            <button className="btn btn-primary px-5" type="submit">Sign up</button>
+            <button className="sign-up" type="submit"><span className='sign-up-font'>SIGN UP</span></button>
           </div>
-          <hr></hr>
-          <p>Already have an account? <Link to="/login">Login</Link></p>
         </form>
       </div>
     )

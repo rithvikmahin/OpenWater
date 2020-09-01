@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { signin } from "../helpers/auth";
 
 export default class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       error: null,
       email: "",

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { signin } from "../helpers/auth";
 
 export default class Login extends Component {
@@ -40,15 +39,6 @@ export default class Login extends Component {
           autoComplete="off"
           onSubmit={this.handleSubmit}
         >
-          <h1>
-            Login to
-            <Link className="title ml-2" to="/">
-              Chatty
-            </Link>
-          </h1>
-          <p className="lead">
-            Fill in the form below to login to your account.
-          </p>
           <div className="form-group">
             <input
               className="form-control"
@@ -75,10 +65,6 @@ export default class Login extends Component {
             ) : null}
             <button className="btn btn-primary px-5" type="submit">Login</button>
           </div>
-          <hr />
-          <p>
-            Don't have an account? <Link to="/signup">Sign up</Link>
-          </p>
         </form>
 
       </div>

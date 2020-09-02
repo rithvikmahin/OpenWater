@@ -83,14 +83,13 @@ export default class Chat extends Component {
             </p>
           })}
         </div>
+
         <form onSubmit={this.handleSubmit} className="mx-3">
           <textarea className="form-control" name="content" onChange={this.handleChange} value={this.state.content}></textarea>
           {this.state.error ? <p className="text-danger">{this.state.error}</p> : null}
           <button type="submit" className="btn btn-submit px-5 mt-4">Send</button>
+          <button className="btn btn-primary mr-3" onClick={() => auth().signOut()}>Logout</button>
         </form>
-        <div className="py-5 mx-3">
-          Login in as: <strong className="text-info">{this.state.user.email}</strong>
-        </div>
       </div>
     );
   }

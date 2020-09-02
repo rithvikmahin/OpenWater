@@ -5,7 +5,7 @@
     box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.16);
     background-color: #737373;
     margin: auto !important;
-  }
+  } 
 
   .sign-up-font {
     width: 108px;
@@ -50,10 +50,23 @@
     Display: flex;
     Align-Items: center;
     Justify-Content: center;
+    padding-top: 70px;
+    padding-bottom: 40px;
   }
 
   .button-container {
     Display: flex;
     Align-Items: center;
     Justify-Content: center;
+  }
+
+  .image-banner {
+    width: 460px;
+    height: 234px;
+    Align-Items: center;
+    Justify-Content: center;
+  }
+
+  .align-button {
+    padding-right: 816px;
   }

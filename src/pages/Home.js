@@ -1,23 +1,47 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import '../assets/css/main.css'
+import { withRouter } from 'react-router-dom'; 
+import '../assets/css/main.css';
+import {
+  Container, Col, Form,
+  Button, Row
+} from 'reactstrap';
 
-export default class HomePage extends Component {
+class HomePage extends Component {
+
+  onSignUp (e) {
+    e.preventDefault()
+    this.props.history.push('/signup'); 
+  }
+
+  onSignIn (e) {
+    e.preventDefault()
+    this.props.history.push('/login'); 
+  }
+
   render() {
     return (
       <div className="home">
         <section>
-          <div className="jumbotron jumbotron-fluid py-5">
+          <div >
             <div className="container text-center py-5">
                 <div className='image-container'>
-                  <img src={ require('../assets/images/Logo.png') } alt='' className='center' />
+                  <img src={ require('../assets/images/Logo.png') } alt='Clinque' className='image-banner' />
                 </div>
+                <Container>
+                  <Row>
+                    <Col>
+                      <Form className="form" onSubmit={this.onSignUp.bind(this)}>
+                        <Button className="sign-up" type='submit'><span className='sign-up-font'>SIGN UP</span></Button>
+                      </Form>
+                    </Col>
                 
-                  <div className='button-container'>
-                    <Link className="sign-up" to="/signup"><span className="sign-up-font">SIGN UP</span></Link>
-                    <Link className="sign-in" to="/login"><span className="sign-in-font">SIGN IN</span></Link>
-                  </div>
-
+                    <Col>
+                      <Form className="form" onSubmit={this.onSignIn.bind(this)}>
+                        <Button className="sign-in" type="submit"><span className='sign-in-font'>SIGN IN</span></Button>
+                      </Form>
+                    </Col>
+                  </Row>
+                </Container>
               </div>
           </div>
         </section>
@@ -25,3 +49,5 @@ export default class HomePage extends Component {
     )
   }
 }
+
+export default withRouter(HomePage);

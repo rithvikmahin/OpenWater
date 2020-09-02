@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../assets/css/main.css'
 import { signup } from "../helpers/auth";
+import { db } from "../components/Firebase/firebase";
+
 import {
   Container, Col, Form,
   FormGroup, Label, Input,
@@ -39,11 +41,14 @@ export default class SignUp extends Component {
   async handleSubmit(event) {
     event.preventDefault();
     this.setState({ error: '' });
+    console.log(this.state);
     try {
-      await signup(this.state.email, this.state.password);
+      await signup(this.state.universityEmail, this.state.password);
     } catch (error) {
       this.setState({ error: error.message });
     }
+    const ref = db.ref('students');
+    await ref.push({'s4' : this.state});
   }
 
   render() {
@@ -120,7 +125,7 @@ export default class SignUp extends Component {
           </Row>
           <FormGroup>
             {this.state.error ? <p className="text-danger">{this.state.error}</p> : null}
-            <span className='align-button'><Button className="sign-up" type="submit"><span className='sign-up-font'>SIGN UP</span></Button></span>
+            <span className='align-button'><Button className="sign-up" type="submit" onClick={this.handleSubmit}><span className='sign-up-font'>SIGN UP</span></Button></span>
           </FormGroup>
         </Form>
       </Container>

@@ -32,22 +32,6 @@ function PrivateRoute({ component: Component, authenticated, ...rest }) {
   );
 }
 
-function PublicRoute({ component: Component, authenticated, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={props =>
-        authenticated === false ? (
-          <Component {...props} />
-        ) : (
-            <Redirect to="/profile" />
-          )
-      }
-    />
-  );
-}
-
-
 // function PublicRoute({ component: Component, authenticated, ...rest }) {
 //   return (
 //     <Route
@@ -56,12 +40,28 @@ function PublicRoute({ component: Component, authenticated, ...rest }) {
 //         authenticated === false ? (
 //           <Component {...props} />
 //         ) : (
-//             <Redirect to="/chat" />
+//             <Redirect to="/profile" />
 //           )
 //       }
 //     />
 //   );
 // }
+
+
+function PublicRoute({ component: Component, authenticated, ...rest }) {
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        authenticated === false ? (
+          <Component {...props} />
+        ) : (
+            <Redirect to="/chat" />
+          )
+      }
+    />
+  );
+}
 
 class App extends Component {
   constructor() {

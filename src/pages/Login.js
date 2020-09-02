@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { signin } from "../helpers/auth";
+import { signin, signInWithGoogle, signInWithGitHub } from "../helpers/auth";
 
 export default class Login extends Component {
   constructor(props) {
@@ -27,6 +27,10 @@ export default class Login extends Component {
     this.setState({ error: "" });
     try {
       await signin(this.state.email, this.state.password);
+      await signInWithGoogle(this.state.email, this.state.password);
+      await signInWithGitHub(this.state.email, this.state.password);
+
+
     } catch (error) {
       this.setState({ error: error.message });
     }

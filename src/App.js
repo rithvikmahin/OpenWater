@@ -13,6 +13,8 @@ import Login from './pages/Login';
 import { auth } from './components/Firebase/firebase';
 import './App.css';
 
+import Profile from './pages/Profile';
+
 function PrivateRoute({ component: Component, authenticated, ...rest }) {
   return (
     <Route
@@ -38,12 +40,28 @@ function PublicRoute({ component: Component, authenticated, ...rest }) {
         authenticated === false ? (
           <Component {...props} />
         ) : (
-            <Redirect to="/chat" />
+            <Redirect to="/profile" />
           )
       }
     />
   );
 }
+
+
+// function PublicRoute({ component: Component, authenticated, ...rest }) {
+//   return (
+//     <Route
+//       {...rest}
+//       render={props =>
+//         authenticated === false ? (
+//           <Component {...props} />
+//         ) : (
+//             <Redirect to="/chat" />
+//           )
+//       }
+//     />
+//   );
+// }
 
 class App extends Component {
   constructor() {
@@ -79,6 +97,8 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/" component={Profile} />
+
             <PrivateRoute
               path="/chat"
               authenticated={this.state.authenticated}
@@ -93,6 +113,12 @@ class App extends Component {
               path="/login"
               authenticated={this.state.authenticated}
               component={Login}
+            />
+
+            <PublicRoute
+              path="/profile"
+              authenticated={this.state.authenticated}
+              component={Profile}
             />
           </Switch>
         </Router>

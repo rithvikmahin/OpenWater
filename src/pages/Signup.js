@@ -47,7 +47,7 @@ export default class SignUp extends Component {
       this.setState({ error: error.message });
     }
     const ref = db.ref('students');
-    await ref.push({'s4' : this.state});
+    await ref.push(this.state);
   }
 
   render() {

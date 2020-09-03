@@ -1,5 +1,19 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## The Matching Algorithm:
+
+To directly test the matching algorithm, go to "src/" and run:
+
+### `transform-firebase.ipynb`
+
+Transforms some of the data in the Firebase Realtime Database to indicate whether a course taken by a user is current.
+
+### `match-firebase.ipynb`
+
+Matches every mentee (currently taking a course) to available mentors (users who have taken that course in the past and are willing to be mentors) and stores these matches in the Database.
+
+These two programs need to be executed periodically to show new recommendations to users.
+
 ## Available Scripts
 
 In the project directory, you can run:

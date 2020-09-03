@@ -1,6 +1,24 @@
 import React, { Component } from "react";
 import { auth } from "../components/Firebase/firebase";
 import { db } from "../components/Firebase/firebase";
+import Sidebar from './Sidebar';
+import { Container, Col, Row } from "reactstrap";
+
+const items = [
+  { name: 'Profile', label: 'My Profile' },
+  { name: 'notifications', label: 'Notifications' },
+  { name: 'requests', label: 'Mentee Requests' },
+  { name: 'message', label: 'Messages' },
+  "divider",
+  { name: 'interests', label: 'Areas of Interest', 
+  items: [
+    { name: 'SQL', label: 'SQL' },
+    { name: 'Data Viz', label: 'Data Visualization' },
+    { name: 'Python', label: 'Python' },
+    { name: 'copywriting', label: 'Copywriting' },
+    { name: 'NLP', label: 'Natural Language Processing' }
+  ]}
+]
 
 export default class Chat extends Component {
   constructor(props) {
@@ -69,27 +87,42 @@ export default class Chat extends Component {
   render() {
     return (
       <div>
-        <div className="chat-area" ref={this.myRef}>
-          {/* loading indicator */}
-          {this.state.loadingChats ? <div className="spinner-border text-success" role="status">
-            <span className="sr-only">Loading...</span>
-          </div> : ""}
-          {/* chat area */}
-          {this.state.chats.map(chat => {
-            return <p key={chat.timestamp} className={"chat-bubble " + (this.state.user.uid === chat.uid ? "current-user" : "")}>
-              {chat.content}
-              <br />
-              <span className="chat-time float-right">{this.formatTime(chat.timestamp)}</span>
-            </p>
-          })}
-        </div>
+        
+        <Container>
+          <Row>
+            <Col sm="-4" >
+              <Sidebar items={items} />
+            </Col>
+            <Col sm= '7' className='image-container'>
+              <img src={ require('../assets/images/Logo.png') } alt='' className='image-banner' />
+            </Col>
+          </Row>
 
-        <form onSubmit={this.handleSubmit} className="mx-3">
-          <textarea className="form-control" name="content" onChange={this.handleChange} value={this.state.content}></textarea>
-          {this.state.error ? <p className="text-danger">{this.state.error}</p> : null}
-          <button type="submit" className="btn btn-submit px-5 mt-4">Send</button>
-          <button className="btn btn-primary mr-3" onClick={() => auth().signOut()}>Logout</button>
-        </form>
+          <Row>
+            <Col sm="10">
+              <div className="chat-area" ref={this.myRef}>
+                {this.state.loadingChats ? <div className="spinner-border text-success" role="status">
+                <span className="sr-only">Loading...</span>
+                </div> : ""}
+          
+                {this.state.chats.map(chat => {
+                  return <p key={chat.timestamp} className={"chat-bubble " + (this.state.user.uid === chat.uid ? "current-user" : "")}>
+                  {chat.content}
+                  <br />
+                 <span className="chat-time float-right">{this.formatTime(chat.timestamp)}</span>
+                  </p>
+                  })}
+              </div>
+              <form onSubmit={this.handleSubmit} className="mx-1">
+                <textarea className="form-control" rows='1' name="content" onChange={this.handleChange} value={this.state.content}></textarea>
+                 {this.state.error ? <p className="text-danger">{this.state.error}</p> : null}
+                <button type="submit" className="btn btn-submit px-5 mt-4">Send</button> &nbsp; &nbsp; &nbsp; &nbsp; 
+                <button className="btn btn-submit px-5 mt-4 " onClick={() => auth().signOut()}>Logout</button>
+              </form>
+              <p></p>
+            </Col>
+          </Row>
+        </Container>        
       </div>
     );
   }

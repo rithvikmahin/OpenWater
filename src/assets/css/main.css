@@ -67,6 +67,9 @@
     Justify-Content: center;
   }
 
-  .align-button {
-    padding-right: 816px;
+  .form-container {
+    Display: block;
+    Align-Items: center;
+    Justify-Content: center;
+    padding-left: 180px;
   }

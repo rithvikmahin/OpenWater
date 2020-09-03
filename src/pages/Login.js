@@ -1,18 +1,23 @@
 import React, { Component } from "react";
 import { signin } from "../helpers/auth";
+import '../assets/css/main.css';
+import {
+  Container, Form, Row, Col, 
+  FormGroup, Input,
+  Button
+} from 'reactstrap';
+
 
 export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
-      email: "",
+      universityEmail: "",
       password: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    //this.googleSignIn = this.googleSignIn.bind(this);
-    //this.githubSignIn = this.githubSignIn.bind(this);
   }
 
   handleChange(event) {
@@ -25,7 +30,7 @@ export default class Login extends Component {
     event.preventDefault();
     this.setState({ error: "" });
     try {
-      await signin(this.state.email, this.state.password);
+      await signin(this.state.universityEmail, this.state.password);
     } catch (error) {
       this.setState({ error: error.message });
     }
@@ -33,41 +38,42 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="container">
-        <form
-          className="mt-5 py-5 px-5"
-          autoComplete="off"
-          onSubmit={this.handleSubmit}
-        >
-          <div className="form-group">
-            <input
-              className="form-control"
-              placeholder="Email"
-              name="email"
-              type="email"
-              onChange={this.handleChange}
-              value={this.state.email}
-            />
+       <Container>
+          <div className='image-container'>
+            <img src={ require('../assets/images/Logo.png') } alt='' className='image-banner' />
           </div>
-          <div className="form-group">
-            <input
-              className="form-control"
-              placeholder="Password"
-              name="password"
-              onChange={this.handleChange}
-              value={this.state.password}
-              type="password"
-            />
-          </div>
-          <div className="form-group">
-            {this.state.error ? (
-              <p className="text-danger">{this.state.error}</p>
-            ) : null}
-            <button className="btn btn-primary px-5" type="submit">Login</button>
-          </div>
-        </form>
 
-      </div>
+          <Form autoComplete="off" onSubmit={this.handleSubmit}>
+            <Row>
+              <Col sm="12" md={{ size: 10, offset: 3}}>
+                <FormGroup>
+                  <Input className="form-control" placeholder="University Email" name="universityEmail" onChange={this.handleChange} value={this.state.universityEmail} type="text"/>
+                </FormGroup>
+              </Col>
+            </Row>
+
+            <p></p>
+
+            <Row >
+              <Col sm="12" md={{ size: 10, offset: 3}}>
+                <FormGroup>
+                  <Input className="form-control" placeholder="Password" name="password" onChange={this.handleChange} value={this.state.password} type="password"/>
+                </FormGroup>
+              </Col>
+            </Row>
+
+            <p></p>
+
+            <Row >
+              <Col sm="10" md={{ size: 6, offset: 4}}>
+                <FormGroup>
+                  {this.state.error ? <p className="text-danger">{this.state.error}</p> : null}
+                  <Button className="sign-in" type="submit" onClick={this.handleSubmit}><span className='sign-in-font'>SIGN IN</span></Button>
+                </FormGroup>
+              </Col>
+            </Row>
+          </Form>
+        </Container>
     );
   }
 }
